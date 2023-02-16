@@ -1,0 +1,11 @@
+﻿@model Doctor
+
+<h1>Vista parcial del Doctor</h1>
+
+<div class="card" style="width: 40%;">
+    <div class="card-body">
+        <h5 class="card-title">@Model.Apellido</h5>
+        <p class="card-text">Especialidad: @Model.Especialidad -- Salario: @Model.Salario </p>
+        <a asp-controller="Doctor" asp-action="Index" class="btn btn-danger">Come back</a>
+    </div>
+</div>

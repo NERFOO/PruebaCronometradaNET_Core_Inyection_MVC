@@ -1,0 +1,38 @@
+﻿
+<h1>Ceracion de un doctor</h1>
+
+@{
+    List<Hospital> hospitales = ViewData["HOSPITALES"] as List<Hospital>;
+    List<string> especialidades = ViewData["ESPECIALIDADES"] as List<string>;
+}
+
+<h1>Crear Doctor</h1>
+
+<form method="post">
+    <label>Hospital</label>
+    <select name="hospitalCod" class="form-select">
+        @foreach(Hospital hospi in hospitales)
+        {
+            <option value="@hospi.HospitalCod">@hospi.Nombre</option>
+        }
+    </select>
+
+    <label>Apellido</label>
+    <input type="text" name="apellido" class="form-control" />
+    
+    <label>Especialidad</label>
+    <select name="especialidad" class="form-select">
+        @foreach (string espe in especialidades)
+        {
+                <option value="@espe">@espe</option>
+        }
+    </select>
+
+    <label>Salario</label>
+    <input type="number" name="salario" class="form-control" />
+
+    <button type="submit" class="btn btn-success">Crear doctor</button>
+</form>
+
+<br /><br />
+<a asp-controller="Doctor" asp-action="Index" class="btn btn-danger">Come back</a>

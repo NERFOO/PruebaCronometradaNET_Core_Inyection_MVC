@@ -1,0 +1,36 @@
+﻿@model Doctor
+
+@{
+    List<Hospital> hospitales = ViewData["HOSPITALES"] as List<Hospital>;
+    List<string> especialidades = ViewData["ESPECIALIDADES"] as List<string>;
+}
+
+<h1>Actualizar doctor</h1>
+
+<form method="post">
+    <label>Hospital</label>
+    <select name="hospitalCod" class="form-select">
+        @foreach(Hospital hospi in hospitales)
+        {
+            <option value="@hospi.HospitalCod">@hospi.Nombre</option>
+        }
+    </select>
+
+    <input type="hidden" name="doctorNum" class="form-control" value="@Model.DoctorNum" />
+
+    <label>Apellido</label>
+    <input type="text" name="apellido" class="form-control" value="@Model.Apellido" />
+
+    <label>Especialidad</label>
+    <select name="especialidad" class="form-select">
+        @foreach (string espe in especialidades)
+        {
+            <option value="@espe">@espe</option>
+        }
+    </select>
+
+    <label>Salario</label>
+    <input type="number" name="salario" class="form-control" value="@Model.Salario" />
+
+    <button type="submit" class="btn btn-info">Actualizar doctor</button>
+</form>
