@@ -3,8 +3,8 @@ using PruebaCronometrada.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddTransient<IRepositoryDoctor, RepositoryDoctor>();
-//builder.Services.AddTransient<IRepositoryDoctor, RepositoryDoctorOracle>();
+//builder.Services.AddTransient<IRepositoryDoctor, RepositoryDoctor>();
+builder.Services.AddTransient<IRepositoryDoctor, RepositoryDoctorOracle>();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();

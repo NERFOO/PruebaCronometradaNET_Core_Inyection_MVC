@@ -192,5 +192,21 @@ namespace PruebaCronometrada.Repositories
             this.connection.Close();
             this.command.Parameters.Clear();
         }
+
+        public List<Doctor> FindDoctorEspecialidad(string especialidad)
+        {
+            var consulta = (from datos in this.tablaDoctor.AsEnumerable()
+                            where datos.Field<string>("ESPECIALIDAD") == especialidad
+                            select new Doctor
+                            {
+                                HospitalCod = datos.Field<int>("HOSPITAL_COD"),
+                                DoctorNum = datos.Field<int>("DOCTOR_NO"),
+                                Apellido = datos.Field<string>("APELLIDO"),
+                                Especialidad = datos.Field<string>("ESPECIALIDAD"),
+                                Salario = datos.Field<int>("SALARIO")
+                            }).Distinct();
+
+            return consulta.ToList();
+        }
     }
 }

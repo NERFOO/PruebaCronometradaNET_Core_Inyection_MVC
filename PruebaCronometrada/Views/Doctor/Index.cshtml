@@ -1,10 +1,28 @@
 ﻿@model List<Doctor>
 
+@{
+    List<string> especialidades = ViewData["ESPECIALIDADES"] as List<string>;
+}
+
 <h1>Doctores</h1>
 
 <div class="row justify-content-center">
     <a class="btn btn-success" asp-controller="Doctor" asp-action="Create">Crear nuevo Doctor</a>
 </div>
+
+<br />
+<form method="post">
+    <label>Especialidad</label>
+    <select name="especialidad" class="form-select">
+        @foreach (string espe in especialidades)
+        {
+            <option value="@espe">@espe</option>
+        }
+    </select>
+
+    <button type="submit" class="btn btn-success">Buscar doctores</button>
+</form>
+<br />
 
 <table class="table table-striped">
     <thead>

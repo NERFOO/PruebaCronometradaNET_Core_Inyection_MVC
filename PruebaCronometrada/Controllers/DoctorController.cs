@@ -17,6 +17,21 @@ namespace PruebaCronometrada.Controllers
         public IActionResult Index()
         {
             List<Doctor> doctores = this.irepo.GetDoctores();
+
+            List<string> especialidades = this.irepo.GetEspecialidades();
+            ViewData["ESPECIALIDADES"] = especialidades;
+
+            return View(doctores);
+        }
+
+        [HttpPost]
+        public IActionResult Index(string especialidad)
+        {
+            List<Doctor> doctores = this.irepo.FindDoctorEspecialidad(especialidad);
+
+            List<string> especialidades = this.irepo.GetEspecialidades();
+            ViewData["ESPECIALIDADES"] = especialidades;
+
             return View(doctores);
         }
 
